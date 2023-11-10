@@ -1,0 +1,7 @@
+.bg-main{
+    background-color: var(--nav-color);
+}
+
+.bg-sec{
+    background-color: var(--second-color);
+}
