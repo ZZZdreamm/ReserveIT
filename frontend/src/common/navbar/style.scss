@@ -1,0 +1,29 @@
+.navbar {
+  &-elements {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.navbar-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+@media (max-width: 990px) {
+  .navbar-elements {
+    flex-direction: column;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    height: 0px;
+    overflow-y: hidden;
+    transition: height 0.7s;
+    text-align: right;
+    background-color: inherit;
+    & > a {
+      padding: 8px;
+      word-wrap: unset;
+    }
+  }
+}
