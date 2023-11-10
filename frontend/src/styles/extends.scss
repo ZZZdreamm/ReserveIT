@@ -1,0 +1,36 @@
+.longDescription {
+  width: 75%;
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.tightLongDescription {
+  width: 60%;
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.phoneColumn {
+  @include phone {
+    flex-direction: column;
+  }
+}
+
+.tabletColumn {
+  @include tablet {
+    flex-direction: column;
+  }
+}
+
+.blackFont {
+  color: black;
+}
+
+.w-50-phone-100 {
+  width: 50%;
+  @include phone {
+    width: 100%;
+  }
+}
