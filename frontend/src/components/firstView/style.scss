@@ -1,0 +1,11 @@
+.firstSection{
+    @include tablet{
+        flex-direction: column;
+    }
+    & > article{
+        padding: 2rem;
+        @include tablet{
+            padding: 1rem;
+        }
+    }
+}
