@@ -1,0 +1,13 @@
+.myButton {
+  // background-color: white;
+  // color: black;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  border: 1px solid black;
+  padding: 0 20px;
+  border-radius: 1rem;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}
