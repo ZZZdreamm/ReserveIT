@@ -1,0 +1,6 @@
+.service{
+    height: 40vh;
+    @include phone{
+        height: 60vh;
+    }
+}
