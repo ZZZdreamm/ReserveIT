@@ -1,0 +1,110 @@
+// @use 'src/styles/mixins.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --foreground-rgb: 0, 0, 0; */
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --background-color: #33343f;
+  --second-color: #434459;
+  --text-color: #ffffff;
+  --button-color: #51537c;
+  --hover-color: #35375a;
+  // --button-color:
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    /* --nav-color: #fff; */
+  }
+}
+
+body {
+  color: var(--text-color);
+  background: var(--background-color);
+  position: relative;
+  text-align: center;
+  /* linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  border: none;
+}
+
+@include tablet {
+  .pl-20 {
+    padding-left: 32px !important;
+  }
+  .pr-20 {
+    padding-right: 32px !important;
+  }
+}
+
+@include phone {
+  .pl-20 {
+    padding-left: 16px !important;
+  }
+  .pr-20 {
+    padding-right: 16px !important;
+  }
+}
+
+section {
+  width: 100%;
+  min-height: 70vh;
+  margin: 4rem 0;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h1 {
+  font-size: 4rem;
+  @include phone {
+    font-size: 3rem;
+  }
+}
+
+.minh-full-minus-nav {
+  min-height: calc(100vh - 17rem);
+}
+
+.h-full-minus-nav {
+  height: calc(100vh - 17rem);
+}
+
+@import "./colors.css";
+@import "../styles/extends.scss";
