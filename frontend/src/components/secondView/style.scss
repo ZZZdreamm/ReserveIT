@@ -1,0 +1,15 @@
+.information {
+    article{
+        height: 80vh;
+        @include phone{
+            height: 65vh;
+        }
+    }
+  &-textContainer {
+    width: 50%;
+    padding: 1rem;
+    @include tablet {
+      width: 100%;
+    }
+  }
+}
