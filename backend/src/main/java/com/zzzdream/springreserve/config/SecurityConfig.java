@@ -1,6 +1,6 @@
 package com.zzzdream.springreserve.config;
 
-import com.example.springsocial.security.*;
+import com.zzzdream.springreserve.security.*;
 import com.zzzdream.springreserve.security.oauth2.CustomOAuth2UserService;
 import com.zzzdream.springreserve.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.zzzdream.springreserve.security.oauth2.OAuth2AuthenticationFailureHandler;
@@ -19,6 +19,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 @Configuration
 @EnableWebSecurity

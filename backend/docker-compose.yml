@@ -1,6 +1,6 @@
 services:
-  airlines:
-    container_name: airlines
+  reserve:
+    container_name: reserve
     build:
       context: .
     ports:
@@ -8,7 +8,7 @@ services:
     networks:
       - postgres
     depends_on:
-      - db
+      - dbb
     restart: unless-stopped
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
@@ -16,15 +16,15 @@ services:
       SPRING_DATASOURCE_PASSWORD: postgres
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
-  db:
-    container_name: postgres2
+  dbb:
+    container_name: postgres3
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     volumes:
-      - db:/data/postgres
+      - dbb:/data/postgres
     ports:
       - 5332:5432
     networks:
@@ -36,4 +36,4 @@ networks:
     driver: bridge
 
 volumes:
-  db:
+  dbb:
