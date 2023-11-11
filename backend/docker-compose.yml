@@ -1,6 +1,6 @@
 services:
-  reserve:
-    container_name: reserve
+  springreserve:
+    container_name: springreserve
     build:
       context: .
     ports:
