@@ -53,7 +53,6 @@ export function Navbar() {
     name: "Login",
     path: "/login",
   });
-  console.log(currentUser);
 
   useEffect(() => {
     setLastElement(

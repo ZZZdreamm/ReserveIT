@@ -1,4 +1,4 @@
-import { services } from "@/app/services/page";
+import { services } from "@/config/data";
 import "./style.scss";
 import Image from "next/image";
 

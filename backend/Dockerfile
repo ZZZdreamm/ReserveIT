@@ -8,5 +8,5 @@ RUN mvn wrapper:wrapper
 FROM amazoncorretto:21
 WORKDIR /app
 COPY --from=build /app/target/springreserve.jar .
-EXPOSE 8090
+EXPOSE 8080
 CMD ["java", "-jar", "springreserve.jar"]

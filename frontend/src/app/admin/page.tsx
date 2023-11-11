@@ -1,9 +1,8 @@
 "use client";
 
-import { withPrivateRoute } from "@/common/withPrivateRoute";
 import { useEffect } from "react";
 
-const Admin = () => {
+export default function Admin(){
   useEffect(() => {
     console.log("Creator mounted");
     return () => {
@@ -13,4 +12,3 @@ const Admin = () => {
   return <>test</>;
 };
 
-export default withPrivateRoute(Admin);
