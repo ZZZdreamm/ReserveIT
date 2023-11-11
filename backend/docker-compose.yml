@@ -1,6 +1,6 @@
 services:
-  airlines:
-    container_name: airlines
+  springreserve:
+    container_name: springreserve
     build:
       context: .
     ports:
