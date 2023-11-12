@@ -1,16 +1,5 @@
 version: '3'
 services:
-  # frontend:
-  #   image: next-nginx:dev
-  #   build:
-  #     context: ./frontend
-  #   depends_on:
-  #     - backend
-  #   container_name: frontend
-  #   ports:
-  #     # - "3000:3000"
-  #     # - "443:443"
-  #     - "3000:80"
   frontend:
     container_name: frontend
     build:
@@ -18,10 +7,6 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend
-    # volumes:
-    #     - .:/app
-    #     - /app/node_modules
-    #     - /app/.next
     ports:
       - "3000:3000"
 
@@ -30,7 +15,7 @@ services:
       context: ./backend
     container_name: backend
     ports:
-      - "8090:8090"
+      - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
