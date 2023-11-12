@@ -63,7 +63,7 @@ export function Navbar() {
           }
         : {
             name: "Login",
-            path: "/login",
+            path: "/loginn",
           }
     );
   }, [currentUser]);

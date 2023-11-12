@@ -1,18 +1,33 @@
 version: '3'
 services:
+  # frontend:
+  #   image: next-nginx:dev
+  #   build:
+  #     context: ./frontend
+  #   depends_on:
+  #     - backend
+  #   container_name: frontend
+  #   ports:
+  #     # - "3000:3000"
+  #     # - "443:443"
+  #     - "3000:80"
   frontend:
-    build: frontend/.
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     depends_on:
       - backend
-    container_name: frontend
+    # volumes:
+    #     - .:/app
+    #     - /app/node_modules
+    #     - /app/.next
     ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /etc/letsencrypt/archive/arcziweb.com:/etc/nginx/ssl
+      - "3000:3000"
 
   backend:
-    build: backend/.
+    build:
+      context: ./backend
     container_name: backend
     ports:
       - "8090:8090"
