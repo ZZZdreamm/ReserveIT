@@ -1,5 +1,7 @@
 build:
   docker:
-    web: frontend/Dockerfile
+    frontend: frontend/Dockerfile
+    backend: backend/Dockerfile
 run:
-  web: bundle exec puma -C config/puma.rb
+  frontend: npm run start
+  backend: java -jar springreserve.jar
