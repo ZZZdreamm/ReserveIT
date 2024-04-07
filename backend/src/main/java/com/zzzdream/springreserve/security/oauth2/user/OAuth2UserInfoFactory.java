@@ -1,7 +1,7 @@
 package com.zzzdream.springreserve.security.oauth2.user;
 
 import com.zzzdream.springreserve.exception.OAuth2AuthenticationProcessingException;
-import com.zzzdream.springreserve.model.AuthProvider;
+import com.zzzdream.springreserve.model.auth.AuthProvider;
 
 import java.util.Map;
 
