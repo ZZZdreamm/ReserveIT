@@ -1,23 +1,35 @@
 package com.zzzdream.springreserve.controller;
 
-import com.zzzdream.springreserve.repository.ServiceRepository;
-import com.zzzdream.springreserve.repository.UserRepository;
-import com.zzzdream.springreserve.service.ServiceService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zzzdream.springreserve.model.services.ServiceCreateDto;
+import com.zzzdream.springreserve.model.services.ServiceGetDtoWithSubjects;
+import com.zzzdream.springreserve.model.services.ServiceGetDto;
+import com.zzzdream.springreserve.services.ServiceService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/service")
+@RequestMapping("/service")
+@PreAuthorize("hasAuthority('READ_PRIVILEGE')")
 public class ServiceController {
-
-    @Autowired
-    private ServiceRepository serviceRepository;
-
+    private final ServiceService serviceService;
+    public ServiceController(ServiceService serviceService) {
+        this.serviceService = serviceService;
+    }
     @GetMapping("/me")
     public String getCurrentService() {
-        return "service";
+        return "Service is incoming";
+    }
+    @PostMapping("/create")
+    @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')")
+    public ResponseEntity<?> createService(@Valid @RequestBody ServiceCreateDto serviceCreateDto) {
+        return serviceService.createService(serviceCreateDto);
+    }
+    @GetMapping("/all")
+    public @ResponseBody List<? extends ServiceGetDto> getAllServices(@RequestParam(required = false) boolean withSubjects){
+        return serviceService.getAllServices(withSubjects);
     }
 }
