@@ -1,34 +1,22 @@
 package com.zzzdream.springreserve.controller;
 
-import com.zzzdream.springreserve.exception.BadRequestException;
-import com.zzzdream.springreserve.model.AuthProvider;
-import com.zzzdream.springreserve.model.User;
-import com.zzzdream.springreserve.payload.ApiResponse;
-import com.zzzdream.springreserve.payload.AuthResponse;
 import com.zzzdream.springreserve.payload.LoginRequest;
 import com.zzzdream.springreserve.payload.SignUpRequest;
-import com.zzzdream.springreserve.repository.UserRepository;
-import com.zzzdream.springreserve.security.TokenProvider;
-import com.zzzdream.springreserve.service.AuthService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zzzdream.springreserve.services.AuthService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.net.URI;
+
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
-
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -38,5 +26,15 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         return authService.registerUser(signUpRequest);
+    }
+
+    @PatchMapping("/verify")
+    public ModelAndView verifyUser(@RequestParam Long userId, @RequestParam String code) {
+         ResponseEntity<?> result = authService.verifyUser(userId, code);
+         if (result.getStatusCode().is2xxSuccessful()) {
+             return new ModelAndView("redirect:/login");
+         } else {
+             return new ModelAndView("redirect:/error");
+         }
     }
 }

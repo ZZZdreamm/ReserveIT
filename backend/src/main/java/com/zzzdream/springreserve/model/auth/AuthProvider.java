@@ -1,4 +1,4 @@
-package com.zzzdream.springreserve.model;
+package com.zzzdream.springreserve.model.auth;
 
 public enum  AuthProvider {
     local,
