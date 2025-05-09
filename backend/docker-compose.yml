@@ -1,21 +1,21 @@
 version: '3'
 services:
-  backend2:
+  backend:
     build: .
-    container_name: backend2
+    container_name: backend
     ports:
-      - "8090:8090"
+      - "8080:8080"
     depends_on:
-      - dbb
+      - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbb:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-  dbb:
+  db:
     image: 'postgres:latest'
-    container_name: dbb
+    container_name: db
     ports:
       - '5332:5432'
     environment:

@@ -2,6 +2,7 @@ package com.zzzdream.springreserve.security.oauth2;
 
 import com.zzzdream.springreserve.util.CookieUtils;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,8 @@ public class HttpCookieOAuth2AuthorizationRequestRepository implements Authoriza
     public static final String REDIRECT_URI_PARAM_COOKIE_NAME = "redirect_uri";
     private static final int cookieExpireSeconds = 180;
 
+    @Value("${app.auth.redirectUri}")
+    private String redirectUri;
     @Override
     public OAuth2AuthorizationRequest loadAuthorizationRequest(HttpServletRequest request) {
         return CookieUtils.getCookie(request, OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME)
@@ -32,6 +35,7 @@ public class HttpCookieOAuth2AuthorizationRequestRepository implements Authoriza
 
         CookieUtils.addCookie(response, OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME, CookieUtils.serialize(authorizationRequest), cookieExpireSeconds);
         String redirectUriAfterLogin = request.getParameter(REDIRECT_URI_PARAM_COOKIE_NAME);
+        redirectUriAfterLogin = StringUtils.isNotBlank(redirectUriAfterLogin) ? redirectUriAfterLogin : redirectUri;
         if (StringUtils.isNotBlank(redirectUriAfterLogin)) {
             CookieUtils.addCookie(response, REDIRECT_URI_PARAM_COOKIE_NAME, redirectUriAfterLogin, cookieExpireSeconds);
         }
