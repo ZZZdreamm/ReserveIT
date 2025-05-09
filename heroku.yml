@@ -1,0 +1,7 @@
+build:
+  docker:
+    frontend: frontend/Dockerfile
+    backend: backend/Dockerfile
+run:
+  frontend: npm run start
+  backend: java -jar springreserve.jar

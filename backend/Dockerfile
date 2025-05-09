@@ -9,4 +9,8 @@ FROM amazoncorretto:21
 WORKDIR /app
 COPY --from=build /app/target/springreserve.jar .
 EXPOSE 8080
+
+# Define environment variable
+ENV SPRING_PROFILES_ACTIVE=production
+
 CMD ["java", "-jar", "springreserve.jar"]

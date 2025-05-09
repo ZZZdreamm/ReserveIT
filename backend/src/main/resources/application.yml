@@ -1,59 +1,67 @@
+server:
+  servlet:
+    context-path: /api
+
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5332/postgres
-        username: postgres
-        password: postgres
+  datasource:
+      url: ${DATABASE_URL:jdbc:postgresql://localhost:5332/postgres}
+      username: ${DATABASE_USERNAME:postgres}
+      password: ${DATABASE_PASSWORD:postgres}
 
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
       hibernate:
-        ddl-auto: update
-      properties:
-        hibernate:
-          format_sql: true
-        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      show_sql: true
 
-    security:
-      oauth2:
-        client:
-          registration:
-            google:
-              clientId: 206805996121-h2lq56qcc2nsld2dv5vk3etbgkppn95t.apps.googleusercontent.com
-              clientSecret: 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
-              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
-              scope:
-                - email
-                - profile
-#            facebook:
-#              clientId: 121189305185277
-#              clientSecret: 42ffe5aa7379e8326387e0fe16f34132
-#              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
-#              scope:
-#                - email
-#                - public_profile
-#            github:
-#              clientId: d3e47fc2ddd966fa4352
-#              clientSecret: 3bc0f6b8332f93076354c2a5bada2f5a05aea60d
-#              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
-#              scope:
-#                - user:email
-#                - read:user
-#          provider:
-#            facebook:
-#              authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
-#              tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
-#              userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 206805996121-h2lq56qcc2nsld2dv5vk3etbgkppn95t.apps.googleusercontent.com
+            clientSecret: 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
+            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - email
+              - profile
+          github:
+            clientId: a9491d5069c56451f237
+            clientSecret: 552b7a17787dff0f6bdae19b2dc8c444114706c9
+#            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"\
+#            redirectUri: "http://localhost:8080/api/login/oauth2/code/github"
+            scope:
+              - user:email
+              - read:user
+#      resourceserver:
+#        jwt:
+#          issuer-uri: https://accounts.google.com
+#          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+
 app:
+  frontendUrl: http://localhost:3000
+  baseUrl: http://localhost:8080/api
   auth:
     tokenSecret: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
     tokenExpirationMsec: 864000000
+    redirectUri: "http://localhost:8080/api/oauth2/redirect"
   cors:
     allowedOrigins: http://localhost:3000,http://localhost:8080
   oauth2:
-    # After successfully authenticating with the OAuth2 Provider,
-    # we'll be generating an auth token for the user and sending the token to the
-    # redirectUri mentioned by the client in the /oauth2/authorize request.
-    # We're not using cookies because they won't work well in mobile clients.
     authorizedRedirectUris:
+      - http://localhost:8080/api/oauth2/redirect
       - http://localhost:3000/oauth2/redirect
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect
+  admin:
+    email: test@test.com
+    password: test
+  mail:
+    username: kmultan1234@gmail.com
+    password: "gjgp scue mjlf ndxx"
+springdoc:
+  api-docs:
+    path: /docs
