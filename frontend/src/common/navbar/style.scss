@@ -1,4 +1,8 @@
 .navbar {
+  position: relative;
+  background-color: var(--second-color);
+  width: 100%;
+  padding: 0 20px;
   &-elements {
     display: flex;
     justify-content: center;
@@ -20,7 +24,8 @@
     overflow-y: hidden;
     transition: height 0.7s;
     text-align: right;
-    background-color: inherit;
+    background-color: var(--lavender-color);
+    z-index: 100;
     & > a {
       padding: 8px;
       word-wrap: unset;

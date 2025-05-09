@@ -4,7 +4,7 @@ import { ACCESS_TOKEN } from "./constants";
 
 let apiUrl = "https://api.github.com";
 
-const localUrl = "http://localhost:8080/";
+const localUrl = "http://localhost:8080/api/";
 
 if (process.env.NODE_ENV === "development") {
   apiUrl = localUrl;

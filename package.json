@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "nextjs-tui-date-picker": "^2.2.2"
+  }
+}

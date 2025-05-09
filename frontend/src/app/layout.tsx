@@ -20,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <main className="flex min-h-screen w-full flex-col pl-20 pr-20 bg-main">
+        <main className="flex min-h-screen w-full flex-col bg-main">
           <Providers>
             <Navbar />
-            <div className="minh-full-minus-nav h-full w-full">{children}</div>
+            <div id="global-container" className="minh-full-minus-nav h-full w-full pl-20 pr-20 pb-10">{children}</div>
             <Footer />
           </Providers>
         </main>

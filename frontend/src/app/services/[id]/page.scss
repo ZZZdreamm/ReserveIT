@@ -1,0 +1,60 @@
+.service-hold {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.service-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  // background-color: var(--second-color);
+  width: 80%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--second-color);
+}
+
+.service-container__nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  &__element {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 10px 20px;
+    border-radius: 1rem;
+    border: 1px solid black;
+    background-color: var(--button-color);
+  }
+}
+
+
+@include phone{
+  .service-container__nav {
+    justify-content: left;
+  }
+}
+
+
+.top-left-corner{
+  position: absolute;
+  left: 0;
+  top: 0;
+}

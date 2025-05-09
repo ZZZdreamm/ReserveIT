@@ -7,6 +7,7 @@ import { InformationBlock } from "@/components/secondView/InformationBlock";
 import { ServicesSection } from "@/components/servicesSection/ServicesSection";
 import { TutorsView } from "@/components/tutorsView/TutorsView";
 import { ContactView } from "@/components/contactView/ContactView";
+import Router from "next/router";
 
 export default function Home() {
   const { authenticated, loading, setAuthenticated, setCurrentUser } =

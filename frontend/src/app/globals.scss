@@ -13,6 +13,10 @@
   --text-color: #ffffff;
   --button-color: #51537c;
   --hover-color: #35375a;
+  --text-color-second: #2f2f2f;
+  --container-color: #f5f5f5;
+  --lavender-color: #5f5c7b;
+  --light-color:rgb(200, 204, 225);
   // --button-color:
 }
 
@@ -96,6 +100,14 @@ h1 {
   @include phone {
     font-size: 3rem;
   }
+}
+
+#global-container {
+  position: relative;
+}
+
+.active {
+  background-color: var(--hover-color) !important;
 }
 
 .minh-full-minus-nav {

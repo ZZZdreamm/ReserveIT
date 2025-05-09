@@ -1,19 +1,19 @@
 @import "./breakpoints.scss";
 
 @mixin phone() {
-  @media (max-width: $phoneSize) {
+  @media (max-width: 480px) {
     @content;
   }
 }
 
 @mixin tablet() {
-  @media (max-width: $tabletSize) {
+  @media (max-width: 768px) {
     @content;
   }
 }
 
 @mixin desktop() {
-  @media (max-width: $desktopSize) {
+  @media (max-width: 1024px) {
     @content;
   }
 }
@@ -40,3 +40,5 @@
   aspect-ratio: 1;
   border-radius: 50%;
 }
+
+

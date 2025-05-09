@@ -2,6 +2,9 @@
 
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "./AuthProvider";
+import { QueryClientProviderr } from "./QueryClientProvider";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { paypalOptions } from "@/config/paypalConfig";
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +13,11 @@ interface Props {
 export function Providers({ children }: Props) {
   return (
     <ThemeProvider>
-      <AuthProvider>{children}</AuthProvider>
+      <QueryClientProviderr>
+        <PayPalScriptProvider options={paypalOptions}>
+          <AuthProvider>{children}</AuthProvider>
+        </PayPalScriptProvider>
+      </QueryClientProviderr>
     </ThemeProvider>
   );
 }

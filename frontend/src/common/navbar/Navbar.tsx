@@ -44,7 +44,7 @@ const menuParts = [
 const ITEM_PADDING = 16;
 const ITEM_LINE_HEIGHT = 28;
 const OPENED_OPTIONS_HEIGHT =
-  menuParts.length * (ITEM_LINE_HEIGHT + ITEM_PADDING);
+  (menuParts.length+1) * (ITEM_LINE_HEIGHT + ITEM_PADDING);
 
 export function Navbar() {
   const windowWidth = useWindowWidth();
@@ -69,7 +69,7 @@ export function Navbar() {
   }, [currentUser]);
 
   return (
-    <div className="flex justify-between place-items-center h-28 w-full">
+    <div className="navbar flex justify-between place-items-center h-28 w-full">
       <h4 className="text-2xl">MAYIT</h4>
       {windowWidth > 990 ? (
         <div className="navbar-elements">

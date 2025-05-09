@@ -1,0 +1,71 @@
+$fontSize: 1.6rem;
+$size: 4rem;
+$tabletFontSize: 1.3rem;
+$tabletSize: 3rem;
+$phoneFontSize: 1rem;
+$phoneSize: 2rem;
+
+.react-datepicker__day-names {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+}
+
+.react-datepicker__current-month {
+  font-size: $fontSize;
+}
+
+.react-datepicker__day-name {
+  font-size: $fontSize;
+}
+
+.react-datepicker__day {
+  width: $size;
+  height: $size;
+  font-size: $fontSize;
+  line-height: $size;
+}
+
+@include desktop {
+  .react-datepicker__current-month {
+    font-size: $tabletFontSize;
+  }
+
+  .react-datepicker__day-name {
+    font-size: $tabletFontSize;
+  }
+
+  .react-datepicker__day {
+    width: $tabletSize;
+    height: $tabletSize;
+    font-size: $tabletFontSize;
+    line-height: $tabletSize;
+  }
+
+  .react-datepicker__day-names {
+    gap: 0.3rem;
+  }
+}
+
+
+
+@include phone {
+  .react-datepicker__current-month {
+    font-size: $phoneFontSize;
+  }
+
+  .react-datepicker__day-name {
+    font-size: $phoneFontSize;
+  }
+
+  .react-datepicker__day {
+    width: $phoneSize;
+    height: $phoneSize;
+    font-size: $phoneFontSize;
+    line-height: $phoneSize;
+  }
+
+  .react-datepicker__day-names {
+    gap: 0.3rem;
+  }
+}
